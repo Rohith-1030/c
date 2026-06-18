@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main() 
+{
+    char str[100];
+    scanf("%s",str);
+    char ch;
+    scanf(" %c",&ch);
+    int c=0;
+    int l=strlen(str);
+    for(int i=0;i<l;i++)
+    {
+        if(str[i]==ch)
+        {
+            int right=i-1,left=0;
+            while(left<right)
+            {
+                char temp=str[left];
+                str[left]=str[right];
+                str[right]=temp;
+                left++;
+                right--;
+            }
+        }
+    }
+    printf("%s",str);
+	
+
+
+}
