@@ -9,6 +9,6 @@ int main()
     {
         res=res*x;
     }
-    printf("%ld",res);
+    printf("%lld",res);
 }
 
