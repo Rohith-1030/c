@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() 
+{
+    int n,m,sum1=0,sum2=0;
+    scanf("%d%d",&n,&m);
+    for(int i=1;i<n;i++)
+    {
+        if(n%i==0)
+        {
+            sum1+=i;
+        }
+    }
+    for(int j=1;j<m;j++)
+    {
+        if(m%j==0)
+        {
+            sum2+=j;
+        }
+    }
+    float res1=(float)sum1/n;
+    float res2=(float)sum2/m;
+    if(res1==res2)
+    {
+        printf("Friendly Pair");
+    }
+    else{
+        printf("Not A Friendly pair");
+    }
+    return 0;
+}
+    
+	
