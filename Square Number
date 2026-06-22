@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include<stdlib.h>
+int main() 
+{
+    int x;
+    scanf("%d",&x);
+    int root=sqrt(x);
+    if(x==root*root)
+    {
+        printf("Perfect Square");
+    }
+    else{
+        printf("Not a Perfect Number");
+    }
+}
