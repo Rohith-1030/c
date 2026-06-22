@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() 
+{
+    int x,y;
+    scanf("%d%d",&x,&y);
+    long long res=1;
+    for(int i=1;i<=y;i++)
+    {
+        res=res*x;
+    }
+    printf("%ld",res);
+}
+
