@@ -3,7 +3,7 @@
 int main() 
 {
     int n,m;
-    scanf("%d%d",&n,&m);;
+    scanf("%d%d",&n,&m);
     int c,sum,temp;
     for(int i=n;i<=m;i++)
     {
