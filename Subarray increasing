@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main()
+{
+    int n,start=0,end=0;
+    scanf("%d", &n);
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    int curr=1,max=1;
+    int curr_start=0;
+    for(int i=1;i<n;i++)
+    {
+        if(a[i]>a[i-1])
+        {
+            curr++;
+        }
+        else{
+            curr=1;
+            curr_start=i;
+        }
+        if(curr>max)
+        {
+            max=curr;
+            start=curr_start;
+        }
+    }
+    for(int i=start;i<start+max;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
