@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() 
+{
+    char str[100];
+    scanf("%s",str);
+    int n=strlen(str);
+    int curr=0,len=0,start=0;
+    for(int i=0;i<n;i++)
+    {
+        int freq[256]={0};
+        for(int j=i;j<n;j++)
+        {
+            if(freq[(int)str[j]]==1)
+            {
+                break;
+            }
+            freq[(int)str[j]]=1;
+            curr=j-i+1;
+            if(curr>len)
+            {
+                len=curr;
+                start=i;
+                
+            }
+        }
+    }
+    for(int i=start;i<start+len;i++)
+    {
+        printf("%c ",str[i]);
+    }
+    printf("\n");
+    
+}
+    
+	
+
+
