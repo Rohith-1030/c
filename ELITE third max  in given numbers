@@ -1,0 +1,30 @@
+#include <stdio.h>
+int max(int x,int y){
+    return x>y?x:y;
+}
+
+int main() 
+{
+    int n,fmax,smax=-1,curr,tmax;
+    scanf("%d%d",&n,&fmax);\
+    
+    for(int i=2;i<=n;i++){
+        scanf("%d",&curr);
+        if(curr>fmax){
+            tmax=smax;
+            smax=fmax;
+            fmax=curr;
+        }
+        else if(curr>smax)
+        {
+            tmax=smax;
+            smax=curr;
+        }
+        else if(curr>tmax){
+            tmax=curr;
+        }
+    }
+    printf("%d %d %d",fmax,smax,tmax);
+}
+    
+	
