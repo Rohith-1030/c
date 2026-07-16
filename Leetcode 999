@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int numRookCaptures(vector<vector<char>>& board) {
+        int rr=1,rc=1;
+        int n =board.size(),c=board[0].size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++){
+                if(board[i][j]=='R'){
+                    rr=i;
+                    rc=j;
+
+                }
+            }
+        }
+        int attacked=0;
+        for(int i=rr-1;i>=0;i--){
+            if(board[i][rc]=='.') continue;
+            if(board[i][rc]=='p') attacked++;
+            break;
+        }
+        for(int i=rr+1;i<n;i++){
+            if(board[i][rc]=='.') continue;
+            if(board[i][rc]=='p') attacked++;
+            break;
+        }
+        for(int j=rc-1;j>=0;j--){
+            if(board[rr][j]=='.') continue;
+            if(board[rr][j]=='p') attacked++;
+            break;
+        }
+        for(int j=rc+1;j<n;j++){
+            if(board[rr][j]=='.') continue;
+            if(board[rr][j]=='p') attacked++;
+            break;
+        }
+        return attacked;
+        
+    }
+};
