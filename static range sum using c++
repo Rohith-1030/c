@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,q;
+    cin>>n>>q;
+    vector<long long>arr(n+1);
+    arr[0]=0;
+    for(int i=1;i<=n;i++) 
+    {
+        long long  x;
+        cin>>x;
+        arr[i]=arr[i-1]+x;
+    }
+    while(q--){
+        int q1,q2;
+        cin>>q1>>q2;
+        printf("%lld\n",arr[q2]-arr[q1-1]);
+    }
+}
