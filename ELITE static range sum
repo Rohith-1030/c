@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() 
+{
+    int n,q;
+    scanf("%d%d",&n,&q);
+    long long arr[n+1];
+    arr[0]=0;
+    for(int i=1;i<=n;i++)
+    {
+        long long x;
+        scanf("%d",&x);
+        arr[i]=arr[i-1]+x;
+         
+    }
+    while(q-->0){
+        int q1,q2;
+        scanf("%d %d",&q1,&q2);
+        printf("%lld\n",arr[q2]-arr[q1-1]);
+    }
+}
+	
+
+
