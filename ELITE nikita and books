@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+void solve(){
+    int n; cin>>n;
+    vector<int>arr(n+1);
+    for(int i=1;i<=n;i++) cin>>arr[i];
+    long long int bal=0;
+    bool ok=true;
+    for(int i=1;i<=n;i++){
+        if(arr[i]>i) bal+=(arr[i]-i);
+        else{
+            int need=i-arr[i];
+            if(bal>=need)
+            {
+                bal-=need;
+                
+            }
+            else {
+                ok=false; break;
+            }
+        }
+    }
+    cout<<(ok?"YES":"NO") << endl;
+}
+
+int main() {
+    int n;
+    cin>>n;
+    while(n--){
+        solve();
+    }
+}
