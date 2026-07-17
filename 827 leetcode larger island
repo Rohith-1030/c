@@ -1,0 +1,90 @@
+class Solution {
+    const int td[5] = {0, 1, 0, -1, 0};
+
+public:
+    void dfs(int r, int c, int row, int col,
+             vector<vector<int>>& grid,
+             vector<vector<bool>>& vis,
+             int isl) {
+
+        vis[row][col] = true;
+        grid[row][col] = isl;
+
+        for (int i = 0; i < 4; i++) {
+            int ar = row + td[i];
+            int ac = col + td[i + 1];
+
+            if (ar >= 0 && ar < r &&
+                ac >= 0 && ac < c &&
+                grid[ar][ac] == 1 &&
+                !vis[ar][ac]) {
+
+                dfs(r, c, ar, ac, grid, vis, isl);
+            }
+        }
+    }
+
+    int largestIsland(vector<vector<int>>& grid) {
+
+        int r = grid.size(), c = grid[0].size();
+
+        vector<vector<bool>> vis(r, vector<bool>(c, false));
+
+        int isl = 2;   // start from 2 because 0 and 1 already exist
+
+        for (int row = 0; row < r; row++) {
+            for (int col = 0; col < c; col++) {
+                if (grid[row][col] == 1 && !vis[row][col]) {
+                    dfs(r, c, row, col, grid, vis, isl);
+                    isl++;
+                }
+            }
+        }
+
+        vector<int> islcnt(isl, 0);
+
+        for (int row = 0; row < r; row++) {
+            for (int col = 0; col < c; col++) {
+                if (grid[row][col] > 1)
+                    islcnt[grid[row][col]]++;
+            }
+        }
+
+        int ans = 0;
+
+        // Case: all cells are already 1
+        for (int id = 2; id < isl; id++)
+            ans = max(ans, islcnt[id]);
+
+        for (int row = 0; row < r; row++) {
+            for (int col = 0; col < c; col++) {
+
+                if (grid[row][col] == 0) {
+
+                    set<int> si;
+
+                    for (int i = 0; i < 4; i++) {
+                        int ar = row + td[i];
+                        int ac = col + td[i + 1];
+
+                        if (ar >= 0 && ar < r &&
+                            ac >= 0 && ac < c &&
+                            grid[ar][ac] > 1) {
+
+                            si.insert(grid[ar][ac]);
+                        }
+                    }
+
+                    int curr = 1;
+
+                    for (int id : si)
+                        curr += islcnt[id];
+
+                    ans = max(ans, curr);
+                }
+            }
+        }
+
+        return ans;
+    }
+};
