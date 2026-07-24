@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include<limits.h>
+int main() {
+	int n;
+	scanf("%d",&n);
+	int rev=0;
+	while(n!=0){
+	    int dig=n%10;
+	    n/=10;
+	    if((rev>INT_MAX/10)||(rev==INT_MAX/10&&dig>7)) return 0;
+	    if((rev<INT_MIN/10)||(rev==INT_MIN/10&&dig<-8)) return 0;
+	    rev=rev*10+dig;
+	    
+	}
+	printf("%d",rev);
+
+}
